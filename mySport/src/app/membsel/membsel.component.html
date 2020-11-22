@@ -1,0 +1,25 @@
+
+<mat-list role="list">
+  <mat-list-item role="listitem"><a [routerLink]="['/membHealth', 1]" > Khiem </a></mat-list-item>
+  <mat-list-item role="listitem"><a [routerLink]="['/membHealth', 2]" >phoenix</a></mat-list-item>
+  <mat-list-item role="listitem"><a [routerLink]="['/membHealth', 3]" >Duc </a></mat-list-item>
+</mat-list>
+
+<div class="example-container">
+  <mat-form-field appearance="fill">
+    <mat-label>Your Name</mat-label>
+    <input matInput>
+  </mat-form-field>
+</div>
+
+<P>What are your symptoms?</P>
+  <p> <mat-radio-group aria-label="What is your primary symptom?">
+   <p></p> <mat-radio-button value="1">Cough</mat-radio-button>
+    <p><mat-radio-button value="2">Fever</mat-radio-button>
+      <p><mat-radio-button value="3">Chills</mat-radio-button>
+        <p><mat-radio-button value="4">Sore Throat</mat-radio-button>
+          <p><mat-radio-button value="5">Headache</mat-radio-button>
+            <p><mat-radio-button value="6">Nausea</mat-radio-button>
+              <p><mat-radio-button value="7">Loss of Taste/Smell</mat-radio-button>
+
+  </mat-radio-group></p>

@@ -1,0 +1,62 @@
+<app-observation></app-observation>
+
+<div class='card'>
+  <div class='card-header'>
+    <h1> Team Member <sup>➕</sup> </h1>
+  </div>
+</div>
+<div class='table-responsive'>
+  <table class="table" *ngIf='teamList && teamList.length'>
+    <thead>
+      <tr>
+        <th>
+          Id
+        </th>
+        <th>
+          First Name
+        </th>
+        <th>
+          Last Name
+        </th>
+        <th>
+          Birth Date
+        </th>
+        <th>
+          Gender
+        </th>
+        <th>
+          Identifier
+        </th>
+        <th>
+          Team
+        </th>
+        <th>
+          Position
+        </th>
+        <th>
+          Actions
+        </th>
+      </tr>
+    </thead>
+    <tr *ngFor='let t of teamList'>
+      <td> <span> <a routerLink='/teamlist'>{{t.Id}} </a>
+       <a [routerLink]="['/membHealth', t.Id]" >{{"Hello"}}</a> </span>
+      </td>
+      <td>{{t.Family}} </td>
+      <td>{{t.Given}} </td>
+      <td>{{ t.birthDate }} </td>
+      <td>{{t.Gender}} </td>
+      <td>{{t.Identifier}} </td>
+      <td>{{t.Team}} </td>
+      <td>{{t.Position}} </td>
+      <td>
+        <p>✏️
+        </p>
+        <p>🗑️</p>
+        <p><a [routerLink]="['/membHealth', t.Id]" >🔥⚕️</a></p>
+      </td>
+    </tr>
+  </table>
+
+
+</div>

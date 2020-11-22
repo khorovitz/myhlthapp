@@ -1,0 +1,88 @@
+<%- include ('./partials/header.ejs') %>
+    <div class="container">
+        <% if (message) { %>
+            <p class="text-center text-danger">
+                <%= message %>
+            </p>
+            <% } %>
+
+                <% if (athlete) { %>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label>First Name:</label>
+                            <label style="font-weight:bold"><%= athlete.Given %></label>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="family">Last Name:</label>
+                            <label style="font-weight:bold"><%= athlete.Family %></label>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="identifier">Identifier:</label>
+                            <label style="font-weight:bold"><%= athlete.Identifier %></label>
+                        </div>
+                        <div class="col-md-4 ">
+                            <label for="gender">Gender:</label>
+                            <label style="font-weight:bold"><%= athlete.Gender %></label>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="birthDate">birthDate:</label>
+                            <label style="font-weight:bold"><%= athlete.birthDate %></label>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="Team">Team</label>
+                            <label style="font-weight:bold"><%= athlete.Team %></label>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="Position">Position</label>
+                            <label style="font-weight:bold"><%= athlete.Position %></label>
+                        </div>
+
+
+                    </div>
+                    <hr/>
+                    <div>
+                        <h4> Data from the FHIR Server</h4>
+                        <div class="row">
+                            <div class="col-md-4">
+
+                                <label>Server Assigned Id:</label>
+
+                                <label style="font-weight:bold"><%= patient.id %></label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+
+                                <label>Phones:</label><p>
+
+                                <label style="font-weight:bold"><%= '(' + patient.telecom[0].use + ')'  + patient.telecom[0].value  %></label>
+                                <label style="font-weight:bold"><%= '(' + patient.telecom[1].use + ')'  + patient.telecom[1].value  %></label>
+                            </div>
+                            <div class="col-md-4">
+
+                                <label>e-mails:</label><p>
+
+                                <label style="font-weight:bold"><%= '(' + patient.telecom[2].use + ')'  + patient.telecom[2].value  %></label>
+                                <label style="font-weight:bold"><%= '(' + patient.telecom[2].use + ')'  + patient.telecom[2].value  %></label>
+                            </div>
+ 
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+
+                                <label>Address</label>
+                                <label style="font-weight:bold"><%= patient.address[0].line[0]+" "+patient.address[0].city+" "+patient.address[0].state+" "+patient.address[0].postalCode %></label>
+                            </div>
+                        </div>
+                        <%- include ('./partials/health_conditions.ejs') %>
+                            <%- include ('./partials/health_allergies.ejs') %>
+
+                    </div>
+                    <% } else { %>
+                        <p class="text-center">athlete Not Found. Go <a href="/add">here</a> to add athletes.</p>
+                        <% } %>
+    </div>
+    </div>
+    </body>
+
+    </html>

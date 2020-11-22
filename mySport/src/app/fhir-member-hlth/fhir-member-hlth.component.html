@@ -1,0 +1,139 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{team_memb.Family}},{{team_memb.Given}} </mat-card-title>
+    <mat-card-subtitle>Gender: {{team_memb.Gender}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p>Birth Date: {{team_memb.birthDate}} </p>
+    <p>Identifier: {{team_memb.Identifier}} </p>
+    <p>Team: {{team_memb.Team}} - Position: {{team_memb.Position}} </p>
+  </mat-card-content>
+</mat-card>
+
+<hr />
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Server Id:{{patient?.id}} </mat-card-title>
+    <mat-card-subtitle>
+      <p>Gender: {{patient?.gender}}</p>
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <h4>Address</h4>
+    {{patient?.address[0].line}}<br />
+    {{patient?.address[0].city}},{{patient?.address[0].state}}
+    <div *ngIf="patient?.telecom?.length">
+      <div *ngFor="let tel of patient?.telecom">
+        <span>{{tel?.use + ' '+tel?.system + ' ' + tel?.value + ' '}}</span>
+      </div>
+    </div>
+  </mat-card-content>
+  <mat-card-footer>
+    <p>Data From Server</p>
+  </mat-card-footer>
+</mat-card>
+<h2>Symptoms</h2>
+<app-seqsymtoms></app-seqsymtoms>
+<h2>Likely Hood Of Covid</h2>
+
+<mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+
+
+<hr />
+<mat-expansion-panel *ngIf="condition?.total > 0">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      patient has {{condition.total}} conditions
+    </mat-panel-title>
+    <mat-panel-description>
+      Description
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <pre>{{condition.entry | json }}</pre>
+  <div *ngFor="let cond of condition.entry">
+    <p>{{cond.resource.clinicalStatus.coding[0].code}}</p>
+  </div>
+</mat-expansion-panel>
+
+
+<mat-expansion-panel *ngIf="immunization?.total > 0">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      patient has {{immunization?.total}} immunizations
+    </mat-panel-title>
+    <mat-panel-description>
+      Description
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+<pre>{{immunization.entry | json }}</pre>
+</mat-expansion-panel>
+<!--
+  <pre>{{immunization?.entry | json }}</pre>
+  <div *ngFor="let imm of immunization?.entry">
+  </div>
+
+  <p>patient has {{allergy?.total}} allergies</p>
+<p>patient has {{medication?.total}} medications</p>
+
+
+
+
+  <mat-expansion-panel *ngIf="allergy.total > 0">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      patient has {{allergy.total}} allergies
+    </mat-panel-title>
+    <mat-panel-description>
+      Description
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <mat-card-content>
+  <pre>{{allergy.entry | json}}</pre>
+
+
+  <div *ngFor="let all of allergy.entry">
+    {{1}}
+  </div>
+
+</mat-card-content>
+</mat-expansion-panel>
+
+<mat-expansion-panel *ngIf="medication?.total > 0">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      patient has {{medication.total}} medications
+    </mat-panel-title>
+    <mat-panel-description>
+      Description
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <mat-card-content>
+  <pre>{{medication.entry | json }}</pre>
+
+  <div *ngFor="let med of medication.entry">
+    <p></p>
+  </div>
+</mat-card-content>
+</mat-expansion-panel>
+
+
+
+</mat-expansion-panel>
+<mat-expansion-panel *ngIf="medication?.total > 0">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      patient has {{medication.total}} medications
+    </mat-panel-title>
+    <mat-panel-description>
+      Description
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <pre>{{medication.entry | json }}</pre>
+  <div *ngFor="let med of medication.entry">
+    <p></p>
+  </div>
+</mat-expansion-panel>
+-->
+
+<hr />
+<p>patient has {{everything?.total}} everything data </p>
